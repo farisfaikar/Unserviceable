@@ -27,17 +27,17 @@ pip install pygame
 3. Run the calculator:
 - If you have Python installed, run the following command:
   ```
-  python unserviceable.py
+  python Unserviceable.py
   ```
 
 Note: Make sure you have the pygame library available in your Python environment.
 
 ## Future Enhancements
 
-In the future, I plan to enhance this logarithm calculator by adding more advanced scientific calculator functionalities, including:
+In the future, I plan to enhance this python game by adding more functionalities, including:
 
-- make this game more functional.
-- adding gui options for better gamimg.
+- make this game more interactive.
+- adding gui for better gamimg.
 
 Stay tuned for updates and improvements!
 
