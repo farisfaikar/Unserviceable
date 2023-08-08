@@ -2,8 +2,8 @@
 import pygame
 
 # Screen dimension
-screen_width = 800
-screen_height = 512
+screen_width = 1280
+screen_height = 720
 
 # Font
 chary_font = 'data/font/charybdis.ttf'

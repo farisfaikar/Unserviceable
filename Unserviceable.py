@@ -19,7 +19,6 @@ screen = pygame.display.set_mode((cfg.screen_width, cfg.screen_height))
 # pygame.display.set_icon(icon)
 pygame.display.set_caption("Unserviceable!")
 
-
 class Program:
     """ Program class """
 
@@ -27,16 +26,44 @@ class Program:
         # Initiate instances
         self.player = pygame.image.load('data/img/player.png')
 
+        self.font = pygame.font.Font(None, 18)
+        self.controls = {
+            "r": "Remove/Load the magazine",
+            "f": "Rack the gun",
+            "t": "Check bullets in the magazine",
+            "g": "Check bullet in the chamber",
+            "v": "Select firing mode"
+        }
+
     def run(self):
         """ Runs methods every frame """
-        x, y = pygame.mouse.get_pos()
+        mouse_x, mouse_y = pygame.mouse.get_pos()
+
+        # Player drawing and rotation
         player_rect = self.player.get_rect()
-        x1, y1 = player_rect.center
-        angle_rad = math.atan2(y1 - y, x1 - x)
+        player_center_x, player_center_y = player_rect.center
+        
+        angle_rad = math.atan2(player_center_y - mouse_x, player_center_x - mouse_y)
         angle_deg = -math.degrees(angle_rad)
+
         player_copy = pygame.transform.rotate(self.player, angle_deg + 90)
+        
         pygame.draw.rect(screen, cfg.GREEN, player_rect)
         screen.blit(player_copy, player_copy.get_rect())
+
+        # Controls
+        control_rect_height = self.font.get_height() + 10
+        control_rect = pygame.Rect(0, screen.get_height()-control_rect_height, screen.get_width(), control_rect_height)
+        pygame.draw.rect(screen, "MidnightBlue", control_rect)
+
+        previous_width = 5
+        for control in self.controls:
+            render = self.font.render(control+": "+self.controls.get(control), True, "Whitesmoke", "MidnightBlue")
+            screen.blit(render, (0+previous_width, control_rect.y+5))
+
+            previous_width += render.get_width() + 20
+
+        
 
     def process_fire(self):
         if cfg.firing_mode[cfg.firing_index] == 'safe':
@@ -136,7 +163,7 @@ def main():
     """ === DRIVER CODE === """
     # Initiate instances
     program = Program()
-    crt = c.CRT(cfg.screen_width, cfg.screen_height, screen)
+    # crt = c.CRT(1280, 720, screen)
 
     while True:
         for event in pygame.event.get():
