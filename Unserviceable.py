@@ -198,7 +198,7 @@ window.fps = int(Config.user_config.get("Window", "FPS", fallback=60))
 if Config.user_config.get("Window", "WindowMode") == "Windowed":
     window.make_windowed()
 elif Config.user_config.get("Window", "WindowMode") == "WindowedBorderless":
-    window.make_borderless()
+    window.make_borderless(True)
 elif Config.user_config.get("Window", "WindowMode") == "Fullscreen":
     window.make_fullscreen()
 
@@ -214,5 +214,15 @@ def backpack_keybind():
     backpack.shown = not backpack.shown
 window.add_keybind(pygame.K_TAB, backpack_keybind)
 window.add_component(backpack)
+
+# player = GameLibrary.PlayerComponent()
+# window.add_component(player)
+gun = GameLibrary.Gun()
+window.add_component(gun)
+
+def gentle_quit():
+    window.quit()
+    SystemExit()
+window.add_keybind(pygame.K_ESCAPE, gentle_quit)
 
 window.render()
