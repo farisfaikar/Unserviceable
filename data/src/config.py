@@ -1,21 +1,5 @@
 # """ Config file to store global variables """
-# import pygame
-
-# # Screen dimension
-# screen_width = 1280
-# screen_height = 720
-
-# # Font
-# chary_font = 'data/font/charybdis.ttf'
-
-# # Default RBG colors
-# RED = pygame.Color("#ff0000")
-# GREEN = pygame.Color("#00ff00")
-# BLUE = pygame.Color("#0000ff")
-# BLACK = pygame.Color("#000000")
-# WHITE = pygame.Color("#ffffff")
-
-# # Ammo
+# Ammo
 # ammo = 5
 # pouch_data = {  # This could be an object/class?
 #     1: {
